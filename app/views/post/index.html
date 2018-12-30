@@ -1,0 +1,232 @@
+{{set . "title" "新規募集 | スポーツやろうよ！"}}
+{{template "header.html" .}}
+
+<div class="container">
+    
+    <div class="row">
+        <div>
+            <a href="">マイページ</a> > 新規募集
+        </div>
+    </div>
+    <div class="row">
+        <h3>メンバー新規募集</h3>
+    </div>
+    <div class="row">
+        <div>
+            <a href="">応募者を集めるためのポイント</a>
+        </div>
+    </div>
+    
+    <form action="/posts" method="post">
+        <div class="form-group">
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>スポーツ種別</th>
+                        <td>
+                            <select name="example">
+                                {{ range .sports }}
+                                <option value="サンプル1">{{ .Sport  }}</option>
+                                {{ end }}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>サークル名</th>
+                        <td><input type="text" name="body" size="30" maxlength="20"></td>
+                    </tr>
+                    <tr>
+                        <th>都道府県</th>
+                        <td>
+                            <select name="example">
+                                {{ range .posts }}
+                                <option value="サンプル1">{{ .Body }}</option>
+                                {{ end }}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>活動場所</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）○○体育館　○○市周辺など</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>活動時間</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）毎週月曜日19:00～21:00</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>こんな人を探しています</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）男女問わず、○○できる人、経験者、初心者、楽しく参加できる人など</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>募集年齢</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）18歳～30歳くらいまで</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>サークル設立年</th>
+                        <td>
+                            <select name="example">
+                                <option value="サンプル1">サンプル1</option>
+                                <option value="サンプル2">サンプル2</option>
+                                <option value="サンプル3">サンプル3</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>サークル目標</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）○○大会優勝　楽しくサークルをなど</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>サークル構成メンバー</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）男性10人、女性4人など</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>サークル平均年齢</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）20、30代が中心。男女半々くらい</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>サークルホームページ</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>例）http://www.net-menber.com</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>アピールポイント連絡事項</th>
+                        <td>
+                            <input type="text" name="name" size="30" maxlength="20">
+                            <div>
+                                例）サークルの特徴やアピールポイントなど応募者からよくある質問例
+                                「見学してもよいか？」「初心者なんですが入れますか？」「参加費は？」「サークルのレベルは？」「持ち物は何が必要ですか？」
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus"></i>募集を開始する
+                </button>
+            </div>            
+        </div>
+    </form>
+
+    <h3>データ追加</h3>
+    <div class="row">
+        <div class="col-xs-3">
+            <form action="/posts" method="post">
+                <div class="form-group">
+                    <div>TO DO LIST</div>
+                    <input type="text" name="body" size="30" maxlength="20">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus"></i>追加する
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-3">
+            <form action="/posts" method="post">
+                <div class="form-group">
+                    <div>都道府県</div>
+                    <input type="text" name="body" size="30" maxlength="20">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus"></i>追加する
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-3">
+            <form action="/posts" method="post">
+                <div class="form-group">
+                    <div>サークル設立年</div>
+                    <input type="text" name="body" size="30" maxlength="20">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus"></i>追加する
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <h3>データ内容</h3>
+    <div class="row">
+        <div class="col-xs-3">
+            <div>TO DO LIST</div>
+            <table class="table table-striped todo-table">
+                <tbody>
+                    {{ range .posts }}
+                    <tr>
+                        <td>
+                            <div>{{ .Body }}</div>
+                        </td>
+                        <td>
+                            <form action="/posts/{{.Id}}/delete" method="post">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-3">
+            <div>都道府県</div>
+            <table class="table table-striped todo-table">
+                <tbody>
+                    {{ range .posts }}
+                    <tr>
+                        <td>
+                            <div>{{ .Body }}</div>
+                        </td>
+                        <td>
+                            <form action="/posts/{{.Id}}/delete" method="post">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-3">
+            <div>サークル設立年</div>
+            <table class="table table-striped todo-table">
+                <tbody>
+                    {{ range .posts }}
+                    <tr>
+                        <td>
+                            <div>{{ .Body }}</div>
+                        </td>
+                        <td>
+                            <form action="/posts/{{.Id}}/delete" method="post">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+{{template "footer.html" .}}
