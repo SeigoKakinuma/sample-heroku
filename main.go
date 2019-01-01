@@ -18,5 +18,5 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
+	fmt.Fprintf(w, "Hello,さえ大好き %q", r.URL.Path[1:])
 }
