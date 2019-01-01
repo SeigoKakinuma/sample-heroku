@@ -7,28 +7,16 @@ import (
 	"os"
 )
 
-func determineListenAddress() (string, error) {
+func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		return "", fmt.Errorf("$PORT not set")
+		log.Fatal("$PORT must be set")
 	}
-	return ":" + port, nil
+
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":"+port, nil)
 }
 
-func hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello World")
-}
-
-func main() {
-	addr, err := determineListenAddress()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	http.HandleFunc("/", hello)
-	log.Printf("Listening on %s...\n", addr)
-
-	if err := http.ListenAndServe(addr, nil); err != nil {
-		panic(err)
-	}
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
 }
