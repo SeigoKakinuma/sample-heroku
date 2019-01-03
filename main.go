@@ -1,18 +1,22 @@
 package main
 
 import (
-	"github.com/zenazn/goji"
-	"github.com/zenazn/goji/web"
+	"fmt"
+	"log"
 	"net/http"
-	"text/template"
+	"os"
 )
 
 func main() {
-	goji.Get("/", IndexHandler)
-	goji.Serve()
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":"+port, nil)
 }
 
-func IndexHandler(c web.C, w http.ResponseWriter, r *http.Request) {
-	t := template.Must(template.ParseFiles("index.html"))
-	t.Execute(w, nil)
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
 }
