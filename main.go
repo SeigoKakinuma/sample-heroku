@@ -2,10 +2,13 @@ package main
 
 import (
   "fmt"
-  "sample01"
 )
 
 func main() {
-  s1 := sample01.HelloWorld("hoge")
+  s1 := HelloWorld("hoge")
   fmt.Println(s1)
-}   
+}
+
+func HelloWorld(s string) string {
+  return "hello world, " + s
+}
