@@ -1,32 +1,22 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
 )
 
-func IsPrime(n int) bool {
-  if n < 2 {
-    return true
-  } else if n == 2 {
-    return true
-  } else if n % 2 == 0 {
-    return false
-  } else {
-    i := 3
-    for i * i <= n {
-      if n % i == 0 {
-        return false
-      }
-      i += 2
-    }
-    return true
-  }
+func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":"+port, nil)
 }
 
-func main() {
-  for i := 2; i < 100; i += 1 {
-    if IsPrime(i) {
-        fmt.Println(i)
-    }
-  }
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %q", r.URL.Path[1:])
 }
